@@ -6,3 +6,18 @@ const products = [
   { name: "Bleach", category: "household", price: 7.99, inventory: 35 },
   { name: "Scissors", category: "stationery", price: 5.99, inventory: 100 },
 ];
+
+function getCategoryRate(category) {
+  switch (category) {
+    case "electronics":
+      return 0.20;
+    case "apparel":
+      return 0.15;
+    case "groceries":
+    case "household":
+      return 0.10;
+    default:
+      return 0.00;
+  }
+}
+
