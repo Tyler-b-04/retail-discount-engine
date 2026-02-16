@@ -97,7 +97,7 @@ for (const key in sample) {
 // object entries
 console.log("Object.entries() for all products");
 for (const p of products) {
-  console.log("---- PRODUCT ----");
+  console.log("~~~~~ PRODUCT ~~~~~");
   for (const [key, value] of Object.entries(p)) {
     console.log(`${key}:`, value);
   }
