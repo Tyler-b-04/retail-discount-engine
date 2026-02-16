@@ -9,6 +9,11 @@ const products = [
 
 console.log("Products:", products);
 
+// round helper
+function round2(n) {
+  return Math.round(n * 100) / 100;
+}
+
 // category discounts
 function getCategoryRate(category) {
   switch (category) {
@@ -24,16 +29,22 @@ function getCategoryRate(category) {
   }
 }
 
+// apply discounted price
+for (const p of products) {
+  const rate = getCategoryRate(p.category);
+  p.promoPrice = round2(p.price * (1 - rate)); // keep original price
+}
+
 console.log("After category discounts:", products);
 
 // customer type discount
 function getCustomerRate(customerType) {
-  if (customerType = "student") {
+  if (customerType === "student") {
     return 0.05;
-  } else if (customerType = "senior") {
+  } else if (customerType === "senior") {
     return 0.07;
   } else {
-    return 0.00;
+    return 0.0;
   }
 }
 
@@ -59,12 +70,15 @@ for (let i = 0; i < 3; i++) {
     const qty = carts[i][idx];
 
     if (qty <= 0) continue;
+
+    const purchQty = Math.min(qty, p.inventory); // limit to stock
     p.inventory -= purchQty;
-      subtotal += purchQty * p.promoPrice;
+
+    subtotal += purchQty * p.promoPrice;
   }
 
   const total = round2(subtotal * (1 - extraRate));
-   
+
   console.log(
     `Customer ${customerNumber} (${customerType}) | subtotal: $${round2(subtotal)} | extra: ${(extraRate * 100).toFixed(
       0
@@ -74,22 +88,15 @@ for (let i = 0; i < 3; i++) {
 
 console.log("After checkout inventory:", products);
 
-// for...in log
+// for...in log one product
 const sample = products[0];
 console.log("for...in on one product");
 for (const key in sample) {
   console.log(`${key}:`, sample[key]);
 }
 
-console.log("Step 7: Object.entries() for all products");
-for (const p of products) {
-  console.log("~~~ PRODUCT ~~~");
-  for (const [key, value] of Object.entries(p)) {
-    console.log(`${key}:`, value);
-  }
-}
-
-// object.entries for all products
+// object entries
+console.log("Object.entries() for all products");
 for (const p of products) {
   console.log("---- PRODUCT ----");
   for (const [key, value] of Object.entries(p)) {
