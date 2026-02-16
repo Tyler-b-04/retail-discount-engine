@@ -75,3 +75,28 @@ for (let i = 0; i < 3; i++) {
     )}% | total: $${total}`
   );
 }
+
+console.log("After checkout inventory:", products);
+
+// for...in log
+const sample = products[0];
+console.log("for...in on one product");
+for (const key in sample) {
+  console.log(`${key}:`, sample[key]);
+}
+
+console.log("Step 7: Object.entries() for all products");
+for (const p of products) {
+  console.log("~~~ PRODUCT ~~~");
+  for (const [key, value] of Object.entries(p)) {
+    console.log(`${key}:`, value);
+  }
+}
+
+// object.entries for all products
+for (const p of products) {
+  console.log("---- PRODUCT ----");
+  for (const [key, value] of Object.entries(p)) {
+    console.log(`${key}:`, value);
+  }
+}
