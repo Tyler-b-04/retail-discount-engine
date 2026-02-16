@@ -40,15 +40,11 @@ function getCustomerRate(customerType) {
 const customerTypes = ["regular", "student", "senior"];
 
 // customer carts
-function getCustomerRate(customerType) {
-  if (customerType === "student") {
-    return 0.05;
-  } else if (customerType === "senior") {
-    return 0.07;
-  } else {
-    return 0.00;
-  }
-}
+const carts = [
+  [1, 1, 4, 2, 3], // customer 1
+  [0, 2, 6, 1, 5], // customer 2
+  [1, 0, 2, 3, 4], // customer 3
+];
 
 // simulated checkout
 for (let i = 0; i < 3; i++) {
