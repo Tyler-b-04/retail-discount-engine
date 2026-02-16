@@ -7,17 +7,71 @@ const products = [
   { name: "Scissors", category: "stationery", price: 5.99, inventory: 100 },
 ];
 
+console.log("Products:", products);
+
+// category discounts
 function getCategoryRate(category) {
   switch (category) {
     case "electronics":
-      return 0.20;
+      return 0.2;
     case "apparel":
       return 0.15;
     case "groceries":
     case "household":
-      return 0.10;
+      return 0.1;
     default:
-      return 0.00;
+      return 0.0;
   }
 }
 
+console.log("After category discounts:", products);
+
+// customer type discount
+function getCustomerRate(customerType) {
+  if (customerType = "student") {
+    return 0.05;
+  } else if (customerType = "senior") {
+    return 0.07;
+  } else {
+    return 0.00;
+  }
+}
+
+const customerTypes = ["regular", "student", "senior"];
+
+// customer carts
+function getCustomerRate(customerType) {
+  if (customerType === "student") {
+    return 0.05;
+  } else if (customerType === "senior") {
+    return 0.07;
+  } else {
+    return 0.00;
+  }
+}
+
+// simulated checkout
+for (let i = 0; i < 3; i++) {
+  const customerNumber = i + 1;
+  const customerType = customerTypes[i];
+  const extraRate = getCustomerRate(customerType);
+
+  let subtotal = 0;
+
+  for (let idx = 0; idx < products.length; idx++) {
+    const p = products[idx];
+    const qty = carts[i][idx];
+
+    if (qty <= 0) continue;
+    p.inventory -= purchQty;
+      subtotal += purchQty * p.promoPrice;
+  }
+
+  const total = round2(subtotal * (1 - extraRate));
+   
+  console.log(
+    `Customer ${customerNumber} (${customerType}) | subtotal: $${round2(subtotal)} | extra: ${(extraRate * 100).toFixed(
+      0
+    )}% | total: $${total}`
+  );
+}
